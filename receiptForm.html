@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <?!= include('Stylesheet'); ?>
+    <?!= include('logic.js'); ?>
+
+  </head>
+  <body>
+    <div class="__container gray">
+    <form id="osForm">
+      <div class="input-group gray">
+      <b>
+        <label for="nama" class="block">
+          Nama Penumpang
+        </label>
+      </b>
+      <input type="text" class="gray" name="nama"/>
+
+      
+      <b>
+        <label for="kebangsaan" class="block">
+          Kebangsaan/Kode Negara
+        </label>
+      </b>
+      <select name="kodeNegara" id="kodeNegara">
+        <option value="" class="option-placeholder" disabled selected>--Please choose an country--</option>
+      </select>
+      <!-- <input type="text" class="gray" name="" id=""/> -->
+
+      
+      <b>
+        <label for="nomorPaspor" class="block">
+          Nomor Paspor
+        </label>
+      </b>
+      <input type="text" class="gray" name="nomorPaspor"/>
+
+      
+      <b>
+        <label for="masaOverstay" class="block">
+          Masa Overstay
+        </label>
+      </b>
+      <input type="text" class="gray" name="masaOverstay"/>
+
+      
+      <b>
+        <label for="nomorPesawat" class="block">
+          Nomor Pesawat
+        </label>
+      </b>
+      <input type="text" class="gray" name="nomorPesawat"/>
+      </div>
+      <div class="input-group">
+        <b>
+          <label for="officers" class="block">
+            Officers
+          </label>
+        </b>
+        <select name="officers" id="officers">
+          <option value="" class="option-placeholder" disabled selected>--Please choose an officer--</option>
+        </select>
+      </div>
+
+      <div class="block last">
+        <button class="red">Cancel last receipt</button>
+        <button type="submit" class="action">Save</button>
+      </div>
+        
+    </form>
+  </div>
+
+  </body>
+</html>
