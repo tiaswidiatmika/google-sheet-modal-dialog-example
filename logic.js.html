@@ -1,0 +1,53 @@
+<script>
+  function appendOfficersName(nameList) {
+    const names = $('#officers');
+    
+    for (var i = 0; i < nameList.length; i++) {
+      names.append('<option>' + nameList[i][0] + '</option>');
+    }
+  }
+
+function showCountries(countries) {
+  let selection = $('#kodeNegara');
+  for (var i = 0; i < countries.length; i++) {
+    selection.append(`<option value=${countries[i][1]}>${countries[i][0]}, ${countries[i][1]}</option>`);
+  }
+}
+
+function handleOptionChange(element) {
+  const current = element.val();
+  if (current != 'null') {
+      element.css('color','black');
+  } else {
+      element.css('color','gray');
+  }
+}
+
+  $(document).ready(function() {
+
+    // withSuccessHandler function sets a callback function to run if the server-side function returns successfully.
+    // The server's return value is passed to the function as the first argument,
+    // and the user object (if any) is passed as a second argument.
+    google.script.run.withSuccessHandler(appendOfficersName).getOfficers(); // get officers name and append to input select officers
+    google.script.run.withSuccessHandler(showCountries).getCountries(); // get countries list and then append to input select country
+
+    $("#osForm").submit( function(event){
+      
+      event.preventDefault();
+      const onSuccess = _ => google.script.host.close(); // callback to handle after function "receive" was success,
+      // to immediately close the modal dialog
+      google.script.run.withSuccessHandler(onSuccess).receive(this);
+
+    } );
+
+    // changes the color of select option on initial and after selecting one
+    $('#officers').css('color','gray');
+    $('#kodeNegara').css('color','gray');
+
+    // switch select and option text color after user selected an option
+    $('#officers').change(() => handleOptionChange($('#officers')));
+    $('#kodeNegara').change(() => handleOptionChange($('#kodeNegara')));
+});
+
+  
+</script>
